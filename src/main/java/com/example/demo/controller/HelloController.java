@@ -22,7 +22,7 @@ public class HelloController {
 	@Autowired
 	private AuthenticationManager authManager;
 	@Autowired
-	private JwtUtil jwtUtil;
+	private JwtUtil jwtUtil2;
 	
 	@Autowired
 	private MyUserDetailsService service;
@@ -43,7 +43,7 @@ public class HelloController {
 			throw new Exception("Incorrect Username and Password",e);
 		}
 		final UserDetails userDetails=service.loadUserByUsername(req.getUsername());
-		final String jwt=jwtUtil.generateToken(userDetails);
+		final String jwt=jwtUtil2.generateToken(userDetails);
 		return ResponseEntity.ok(new AuthenticationResponse(jwt));
 	}
 }
